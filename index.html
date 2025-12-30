@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRUCSTA SCOPE | Urban Design & Landscape Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CONTEMPORARY URBAN COLOR SCHEME */
+        :root {
+            --primary-urban: #1c3a5c;          /* Deep urban blue */
+            --primary-electric: #2a5a8c;       /* Electric blue */
+            --accent-mint: #3acf91;            /* Fresh mint green */
+            --accent-sky: #4ecdc4;             /* Sky teal */
+            --accent-coral: #ff6b6b;           /* Warm coral accent */
+            --neutral-dark: #0f172a;           /* Deep slate */
+            --neutral-gray: #475569;           /* Modern slate */
+            --neutral-light: #f8fafc;          /* Light background */
+            --neutral-lighter: #f1f5f9;        /* Extra light */
+            --white: #ffffff;
+            --black: #000000;
+            
+            /* Modern shadows */
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            
+            /* Modern border radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            
+            /* Enhanced transitions */
+            --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--neutral-dark);
+            line-height: 1.7;
+            background-color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            background: linear-gradient(135deg, var(--primary-urban), var(--accent-sky));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        h2 {
+            font-size: clamp(2.25rem, 4vw, 3.5rem);
+            color: var(--primary-urban);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky));
+            border-radius: var(--radius-full);
+        }
+        
+        h3 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            color: var(--primary-urban);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--neutral-gray);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+        
+        section {
+            padding: clamp(6rem, 10vw, 10rem) 0;
+            position: relative;
+        }
+        
+        /* Modern Glass Header with Split Background */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, 
+                rgba(28, 58, 92, 0.95) 0%, 
+                rgba(28, 58, 92, 0.85) 50%,
+                rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1.25rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container:hover {
+            transform: translateY(-3px);
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 18px;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+            transition: var(--transition);
+        }
+        
+        .logo-container:hover .logo-img {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--white), #e6f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-sub {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1.8px;
+            margin-top: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        /* Modern Navigation with Floating Effect */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky));
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+        }
+        
+        nav a:hover:before,
+        nav a.nav-active:before {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        nav a.nav-active {
+            color: var(--white);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section with Parallax and Geometric Shapes */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(28, 58, 92, 0.9) 0%, 
+                rgba(42, 90, 140, 0.8) 50%,
+                rgba(58, 207, 145, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(58, 207, 145, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(78, 205, 196, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+        
+        .hero-geometric {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .geometric-shape {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 85%;
+            animation-delay: 5s;
+        }
+        
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 15%;
+            animation-delay: 10s;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+        }
+        
+        .hero h1 {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, #ffffff, #e6f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+            margin-bottom: 3.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Modern Button System */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, var(--accent-mint), var(--accent-sky));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: 0.7s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Section Intro */
+        .section-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        
+        .section-intro h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Modern Process Timeline - 3D Effect */
+        .process-section {
+            background: linear-gradient(135deg, var(--neutral-light) 0%, var(--neutral-lighter) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(58, 207, 145, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(78, 205, 196, 0.05) 0%, transparent 50%);
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+        
+        .process-timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%,
+                var(--accent-mint) 20%,
+                var(--accent-sky) 80%,
+                transparent 100%);
+            border-radius: var(--radius-full);
+        }
+        
+        .process-step {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 6rem;
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .step-content {
+            width: 45%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-content:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .step-content.left {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        .step-content.right {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-mint), var(--accent-sky));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            border: 6px solid var(--white);
+            box-shadow: var(--shadow-lg);
+            z-index: 2;
+        }
+        
+        .step-content.left .step-number {
+            right: -35px;
+        }
+        
+        .step-content.right .step-number {
+            left: -35px;
+        }
+        
+        .step-tag {
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            background: linear-gradient(135deg, rgba(58, 207, 145, 0.1), rgba(78, 205, 196, 0.1));
+            color: var(--accent-mint);
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(58, 207, 145, 0.2);
+        }
+        
+        /* Modern Services Grid with Hover Effects */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(58, 207, 145, 0.05), rgba(78, 205, 196, 0.05));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .service-card:hover:before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary-urban), var(--accent-sky));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .service-features {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-features ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--neutral-gray);
+            font-size: 1.05rem;
+        }
+        
+        .service-features li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-mint);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            background: linear-gradient(135deg, rgba(58, 207, 145, 0.1), rgba(78, 205, 196, 0.1));
+            color: var(--accent-mint);
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(58, 207, 145, 0.2);
+        }
+        
+        /* Portfolio Showcase with Masonry Grid */
+        .portfolio-section {
+            background: var(--neutral-light);
+            position: relative;
+        }
+        
+        .portfolio-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            grid-auto-flow: dense;
+        }
+        
+        .portfolio-item {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .portfolio-item.large {
+            grid-column: span 2;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-content {
+            padding: 2.5rem;
+            position: relative;
+            background: var(--white);
+        }
+        
+        .portfolio-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(28, 58, 92, 0.1), rgba(42, 90, 140, 0.1));
+            color: var(--primary-electric);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(28, 58, 92, 0.2);
+        }
+        
+        /* Modern Careers Grid */
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+        
+        .career-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .career-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .career-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky));
+        }
+        
+        .career-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .career-tag {
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, rgba(28, 58, 92, 0.1), rgba(42, 90, 140, 0.1));
+            color: var(--primary-urban);
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(28, 58, 92, 0.2);
+        }
+        
+        .salary-tag {
+            background: linear-gradient(135deg, rgba(58, 207, 145, 0.1), rgba(78, 205, 196, 0.1));
+            color: var(--accent-mint);
+            border-color: rgba(58, 207, 145, 0.2);
+        }
+        
+        .career-requirements ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .career-requirements li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--neutral-gray);
+        }
+        
+        .career-requirements li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-mint);
+            font-weight: bold;
+        }
+        
+        /* Modern Contact Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid var(--neutral-lighter);
+            border-radius: var(--radius-md);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--neutral-lighter);
+            color: var(--neutral-dark);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-mint);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(58, 207, 145, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Modern Footer with Split Design */
+        footer {
+            background: linear-gradient(135deg, 
+                var(--primary-urban) 0%, 
+                #152a4a 50%,
+                #0f2038 100%);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky));
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo-text .logo-main {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo-text .logo-sub {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links h4, .footer-legal h4 {
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-links h4:after, .footer-legal h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky));
+        }
+        
+        .footer-links ul, .footer-legal ul {
+            list-style: none;
+        }
+        
+        .footer-links li, .footer-legal li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a, .footer-legal a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .footer-links a:hover, .footer-legal a:hover {
+            color: var(--accent-mint);
+            transform: translateX(8px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .legal-links a:hover {
+            color: var(--accent-mint);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(90deg); }
+            50% { transform: translate(0, -40px) rotate(180deg); }
+            75% { transform: translate(-20px, -20px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+        
+        /* Scroll Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-mint), var(--accent-sky));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 2rem;
+            }
+            
+            .header-container {
+                padding: 0 2rem;
+            }
+            
+            .process-timeline:before {
+                left: 30px;
+            }
+            
+            .process-step {
+                justify-content: flex-start;
+            }
+            
+            .step-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+            
+            .step-content.left .step-number,
+            .step-content.right .step-number {
+                left: -60px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            h2 {
+                font-size: clamp(2rem, 4vw, 3rem);
+            }
+            
+            section {
+                padding: 5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: clamp(3rem, 6vw, 4.5rem);
+            }
+            
+            .services-grid,
+            .careers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-masonry {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-item.large {
+                grid-column: span 1;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .logo-img {
+                height: 50px;
+                margin-right: 12px;
+            }
+            
+            .logo-main {
+                font-size: 1.6rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(28, 58, 92, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 6rem 2rem 3rem;
+                transform: translateX(-100%);
+                transition: var(--transition);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            nav.active {
+                transform: translateX(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                background: transparent;
+                border: none;
+                padding: 0;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            nav li {
+                margin: 0 0 1.8rem 0;
+            }
+            
+            nav a {
+                font-size: 1.3rem;
+                padding: 1rem;
+                border-radius: var(--radius-md);
+                background: rgba(255, 255, 255, 0.05);
+            }
+            
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .contact-form {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .service-card,
+            .career-card {
+                padding: 2rem;
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Glass Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#home" class="logo-container" id="home-link">
+                <img src="STR SCOPE LOGO 1.png" alt="STRUCSTA SCOPE Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-main">STRUCSTA SCOPE</div>
+                    <div class="logo-sub">URBAN DESIGN & LANDSCAPE ARCHITECTURE</div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link nav-active">Home</a></li>
+                    <li><a href="#process" class="nav-link">Process</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#careers" class="nav-link">Careers</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-geometric">
+                <div class="geometric-shape shape-1"></div>
+                <div class="geometric-shape shape-2"></div>
+                <div class="geometric-shape shape-3"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>Redefining Urban Landscapes</h1>
+                    <p>We merge visionary urban design with sustainable landscape architecture to create cities that are not only functional but thrive in harmony with nature.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn">
+                            <span>Start Project</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#services" class="btn btn-outline">
+                            <span>View Services</span>
+                            <i class="fas fa-compass"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="process-section">
+            <div class="container">
+                <div class="section-intro fade-in">
+                    <h2>Our Design Process</h2>
+                    <p>A systematic approach to transforming urban spaces through innovation, sustainability, and community-focused design.</p>
+                </div>
+                
+                <div class="process-timeline">
+                    <div class="process-step fade-in">
+                        <div class="step-content left">
+                            <div class="step-number">01</div>
+                            <h3>Discovery & Analysis</h3>
+                            <p>Comprehensive site assessment, stakeholder engagement, and environmental analysis to establish project foundations and opportunities.</p>
+                            <span class="step-tag">Research Phase</span>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in">
+                        <div class="step-content right">
+                            <div class="step-number">02</div>
+                            <h3>Concept Development</h3>
+                            <p>Creative ideation and preliminary design concepts that address functional requirements while creating unique spatial experiences.</p>
+                            <span class="step-tag">Design Phase</span>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in">
+                        <div class="step-content left">
+                            <div class="step-number">03</div>
+                            <h3>Detailed Design</h3>
+                            <p>Technical development, material specifications, and construction documentation ensuring feasibility and regulatory compliance.</p>
+                            <span class="step-tag">Technical Phase</span>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in">
+                        <div class="step-content right">
+                            <div class="step-number">04</div>
+                            <h3>Implementation</h3>
+                            <p>On-site supervision, contractor coordination, and quality control to ensure design vision translates perfectly into built reality.</p>
+                            <span class="step-tag">Build Phase</span>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in">
+                        <div class="step-content left">
+                            <div class="step-number">05</div>
+                            <h3>Post-Completion</h3>
+                            <p>Performance evaluation, maintenance planning, and community feedback integration for continuous improvement.</p>
+                            <span class="step-tag">Evaluation Phase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <div class="section-intro fade-in">
+                    <h2>Our Expertise</h2>
+                    <p>Comprehensive urban design and landscape architecture services tailored for the modern city.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3>Urban Design Masterplanning</h3>
+                        <p>Strategic urban planning and comprehensive masterplanning services that shape the future of cities and communities.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>Urban regeneration strategies</li>
+                                <li>Mixed-use development planning</li>
+                                <li>Public realm design</li>
+                                <li>Placemaking and activation</li>
+                                <li>Smart city integration</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Urban Planning</span>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Landscape Architecture</h3>
+                        <p>Innovative landscape design that integrates ecology, aesthetics, and functionality for sustainable urban environments.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>Park and green space design</li>
+                                <li>Biodiversity enhancement</li>
+                                <li>Green infrastructure planning</li>
+                                <li>Habitat creation and restoration</li>
+                                <li>Therapeutic landscape design</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Landscape Design</span>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainable Design</h3>
+                        <p>Environmental strategies and sustainable design solutions that reduce ecological impact and enhance resilience.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>Sustainable drainage systems (SuDS)</li>
+                                <li>Renewable energy integration</li>
+                                <li>Circular economy principles</li>
+                                <li>Climate adaptation planning</li>
+                                <li>Environmental impact assessment</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Sustainability</span>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3>Transport & Mobility</h3>
+                        <p>Integrated transport planning that balances efficiency, safety, and sustainability for modern urban mobility.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>Active travel network design</li>
+                                <li>EV infrastructure planning</li>
+                                <li>Transportation hub design</li>
+                                <li>Pedestrian and cyclist safety</li>
+                                <li>Public transport integration</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Mobility</span>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Engagement</h3>
+                        <p>Participatory design processes that empower communities and ensure projects reflect local needs and aspirations.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>Stakeholder consultation</li>
+                                <li>Participatory design workshops</li>
+                                <li>Social value assessment</li>
+                                <li>Community capacity building</li>
+                                <li>Inclusive design strategies</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Engagement</span>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Digital Innovation</h3>
+                        <p>Advanced digital tools and technologies for enhanced design visualization, analysis, and project delivery.</p>
+                        <div class="service-features">
+                            <h4>Core Services:</h4>
+                            <ul>
+                                <li>3D modeling and visualization</li>
+                                <li>Digital twin development</li>
+                                <li>BIM integration</li>
+                                <li>Data-driven design analysis</li>
+                                <li>Virtual reality experiences</li>
+                            </ul>
+                        </div>
+                        <span class="service-tag">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <div class="section-intro fade-in">
+                    <h2>Project Portfolio</h2>
+                    <p>Showcasing our transformative work in urban design and landscape architecture across the UK.</p>
+                </div>
+                
+                <div class="portfolio-masonry">
+                    <div class="portfolio-item large fade-in">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80" alt="Manchester Riverside Regeneration" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Urban Regeneration</span>
+                            <h3>Manchester Riverside Revival</h3>
+                            <p>A transformative urban regeneration project converting industrial wasteland into a vibrant mixed-use community with extensive public spaces.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80" alt="London Workplace Campus" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Corporate Campus</span>
+                            <h3>London Innovation Hub</h3>
+                            <p>BREEAM Outstanding workplace campus with integrated green infrastructure and biophilic design principles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80" alt="Birmingham Transport Hub" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Transport Hub</span>
+                            <h3>Birmingham Mobility Center</h3>
+                            <p>Integrated transport hub with smart mobility solutions, EV infrastructure, and pedestrian-first design.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item large fade-in">
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80" alt="Edinburgh Heritage Quarter" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Heritage Conservation</span>
+                            <h3>Edinburgh Cultural District</h3>
+                            <p>Sensitive urban design balancing heritage preservation with contemporary needs in a UNESCO World Heritage site.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Section -->
+        <section id="careers">
+            <div class="container">
+                <div class="section-intro fade-in">
+                    <h2>Join Our Team</h2>
+                    <p>Help shape the future of urban environments with a team of passionate design professionals.</p>
+                </div>
+                
+                <div class="careers-grid">
+                    <div class="career-card fade-in">
+                        <h3>Senior Urban Designer</h3>
+                        <div class="career-tags">
+                            <span class="career-tag">Full-time</span>
+                            <span class="career-tag">London/Manchester</span>
+                            <span class="career-tag salary-tag">£45,000-£60,000</span>
+                        </div>
+                        <p>Lead complex regeneration projects and mentor junior team members with 8+ years experience in urban design.</p>
+                        
+                        <div class="career-requirements">
+                            <h4>Requirements:</h4>
+                            <ul>
+                                <li>RIBA/CIHT accreditation or equivalent</li>
+                                <li>Proficiency in AutoCAD, Revit, SketchUp</li>
+                                <li>Proven track record of planning approvals</li>
+                                <li>Strong client liaison and presentation skills</li>
+                                <li>Experience leading multidisciplinary teams</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="#contact" class="btn" style="display: block; width: 100%; text-align: center; margin-top: 2rem;">
+                            Apply Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="career-card fade-in">
+                        <h3>Landscape Architect</h3>
+                        <div class="career-tags">
+                            <span class="career-tag">Full-time</span>
+                            <span class="career-tag">Bristol</span>
+                            <span class="career-tag salary-tag">£35,000-£45,000</span>
+                        </div>
+                        <p>Work on diverse projects including green infrastructure and ecological enhancement schemes.</p>
+                        
+                        <div class="career-requirements">
+                            <h4>Requirements:</h4>
+                            <ul>
+                                <li>LI accredited or equivalent qualification</li>
+                                <li>3+ years professional experience</li>
+                                <li>Strong plant knowledge and ecological understanding</li>
+                                <li>Experience with UK planning processes</li>
+                                <li>Proficiency in Vectorworks or AutoCAD</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="#contact" class="btn" style="display: block; width: 100%; text-align: center; margin-top: 2rem;">
+                            Apply Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="career-card fade-in">
+                        <h3>Graduate Urban Planner</h3>
+                        <div class="career-tags">
+                            <span class="career-tag">Full-time</span>
+                            <span class="career-tag">Edinburgh</span>
+                            <span class="career-tag salary-tag">£26,000-£32,000</span>
+                        </div>
+                        <p>Support senior planners with research, policy analysis and planning applications.</p>
+                        
+                        <div class="career-requirements">
+                            <h4>Requirements:</h4>
+                            <ul>
+                                <li>RTPI accredited degree in planning</li>
+                                <li>Excellent written and verbal communication</li>
+                                <li>Strong understanding of UK planning system</li>
+                                <li>Research and analytical capabilities</li>
+                                <li>Proficiency in GIS and Microsoft Office</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="#contact" class="btn" style="display: block; width: 100%; text-align: center; margin-top: 2rem;">
+                            Apply Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-intro fade-in">
+                    <h2>Start Your Project</h2>
+                    <p>Let's collaborate to create sustainable, beautiful, and functional urban environments.</p>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form id="quote-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Full Name *" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="company" placeholder="Company Name *" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" placeholder="Email Address *" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="tel" class="form-control" id="phone" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-control" id="service-type">
+                                <option value="" selected disabled>Select Service Type</option>
+                                <option value="urban-design">Urban Design Masterplanning</option>
+                                <option value="landscape">Landscape Architecture</option>
+                                <option value="sustainability">Sustainable Design</option>
+                                <option value="transport">Transport & Mobility</option>
+                                <option value="community">Community Engagement</option>
+                                <option value="digital">Digital Innovation</option>
+                                <option value="careers">Career Opportunity</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-control" id="project-details" placeholder="Project Details *" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+                            Submit Request <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <div class="footer-logo-text">
+                        <div class="logo-main">STRUCSTA SCOPE</div>
+                        <div class="logo-sub">URBAN DESIGN & LANDSCAPE ARCHITECTURE</div>
+                        <p style="color: rgba(255, 255, 255, 0.85); margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.6;">Creating sustainable, innovative, and beautiful urban environments that enhance community wellbeing and ecological resilience.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#process"><i class="fas fa-chevron-right"></i> Our Process</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#careers"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-balance-scale"></i> Terms & Conditions</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite"></i> Cookie Policy</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Data Protection</a></li>
+                        <li><a href="#"><i class="fas fa-leaf"></i> Sustainability Policy</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Modern Slavery Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 STRUCSTA SCOPE. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Registered in England & Wales: Company No. 12345678 | VAT No. GB 123 4567 89</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const quoteForm = document.getElementById('quote-form');
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const serviceType = document.getElementById('service-type').value;
+            
+            // Show success message with animation
+            const submitBtn = quoteForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Thank you ${name} from ${company}! Your ${serviceType} inquiry has been submitted. We'll contact you at ${email} within 24 hours.`);
+                
+                // Reset form
+                quoteForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1500);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(90deg, rgba(28, 58, 92, 0.98) 0%, rgba(28, 58, 92, 0.9) 50%, rgba(255, 255, 255, 0.05) 100%)';
+                header.style.boxShadow = 'var(--shadow-lg)';
+                backToTop.classList.add('visible');
+            } else {
+                header.style.background = 'linear-gradient(90deg, rgba(28, 58, 92, 0.95) 0%, rgba(28, 58, 92, 0.85) 50%, rgba(255, 255, 255, 0.05) 100%)';
+                header.style.boxShadow = 'var(--shadow-md)';
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Back to top functionality
+        const backToTop = document.getElementById('backToTop');
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Scroll animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+        });
+        
+        // Service card hover animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Career card hover animation
+        document.querySelectorAll('.career-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Process step hover animation
+        document.querySelectorAll('.step-content').forEach(step => {
+            step.addEventListener('mouseenter', () => {
+                step.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+            
+            step.addEventListener('mouseleave', () => {
+                step.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+        
+        // Initialize scroll position
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
